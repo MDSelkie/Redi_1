@@ -1,1 +1,10 @@
-First line
+SELECT 
+	 u.company_id,
+	 count(e.event_name) as logins_made
+FROM  tutorial.yammer_users as u
+LEFT JOIN  tutorial.yammer_events as e
+  ON e.user_id = u.user_id 
+WHERE e.event_name = 'login'
+GROUP BY 1
+order by logins_made DESC
+LIMIT 2
